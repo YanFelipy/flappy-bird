@@ -44,5 +44,42 @@ function parDeBarreiras(altura, abertura, x) {
 
 }
 
-const b = new parDeBarreiras(500, 200, 400)
-document.querySelector('[yf-flappy]').appendChild(b.elemento)
+//const b = new parDeBarreiras(500, 200, 400)
+//document.querySelector('[yf-flappy]').appendChild(b.elemento)
+
+function Barreiras(altura, largura, abertura, espaco, notificarPonto){
+    this.pares = [
+        new parDeBarreiras(altura,abertura,largura),
+        new parDeBarreiras(altura,abertura,largura + espaco),
+        new parDeBarreiras(altura,abertura,largura + espaco * 2),
+        new parDeBarreiras(altura,abertura,largura + espaco * 3),
+        
+    ]
+
+    const descolacamento = 3
+    this.animar = () => {
+        this.pares.forEach(par =>{
+            par.setX(par.getX() - descolacamento)
+        
+        // Quando o elemento sair da área do jogo
+
+        if (par.getX() < -par.getLargura()){
+            par.setX(par.getX() + espaco * this.pares.length)
+            par.sortearAbertura()
+        }
+
+        const meio = largura / 2
+        const cruzouOmeio = par.getX() + descolacamento >= meio
+           && par.getX() < meio
+           if(cruzouOmeio)notificarPonto()
+
+        })
+    }
+}
+
+const barreiras = new Barreiras(700,1100,200,400)
+const areaDoJogo = document.querySelector('[yf-flappy]')
+barreiras.pares.forEach(par => areaDoJogo.appendChild(par.elemento))
+setInterval(() => {
+    barreiras.animar()
+}, 20)
