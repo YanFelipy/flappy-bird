@@ -168,7 +168,7 @@ function FlappyBird() {
          barreiras.pares.forEach(par => areaDoJogo.appendChild(par.elemento))
 
          
-         const gameOver = document.querySelector('.game-over')
+         const gameOver = document.getElementById('gm')
          const pontuação = document.getElementById('pontuação')
          pontuação.textContent = `Pontuação: ${pontos}`
         
@@ -187,7 +187,7 @@ function FlappyBird() {
                        clearInterval(temporizador)
 
                      areaDoJogo.style.display= 'none' 
-                     gameOver.style.visibility = 'visible'
+                     gameOver.style.display = 'flex'
                      pontuação.textContent = `Pontuação: ${progresso.elemento.textContent}`
                     
                    }

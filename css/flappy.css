@@ -70,7 +70,7 @@
 
 .game-over {
 
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -81,8 +81,7 @@
     top: 30%;
     font-family: 'Pixel';
     src: url('/fonts/Pixel.ttf');
-    visibility: hidden;
-    animation: zoomAndVisible ease 3.2s;
+    animation: zoomAndVisible ease 4.2s;
 }
 
 .game-over #pontuação {
