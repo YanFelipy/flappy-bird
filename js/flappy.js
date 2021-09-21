@@ -97,7 +97,8 @@ function Passaro(alturaDoJogo){
                 this.setY = (0)
             }
             else if (novoY >= alturaMaxima){
-            this.setY =(alturaMaxima)}
+            this.setY =(alturaMaxima)
+        }
             else {
                 this.setY(novoY)
             }
@@ -119,14 +120,6 @@ function Progresso() {
     }
     this.atualizarPontos(0)
 }
-
-// areaDoJogo.appendChild(passaro.elemento)
-// areaDoJogo.appendChild(new Progresso().elemento)
-// barreiras.pares.forEach(par => areaDoJogo.appendChild(par.elemento))
-// setInterval(() => {
-//     barreiras.animar()
-//     passaro.animar()
-// }, 20)
 
 function estaoSobrepostos(elementoA, elementoB){
    const a = elementoA.getBoundingClientRect()
@@ -164,7 +157,9 @@ function FlappyBird() {
 
          const progresso = new Progresso()
          const barreiras = new Barreiras(altura, largura, 200, 400,
-         () => progresso.atualizarPontos(++pontos))
+            ()  =>progresso.atualizarPontos(++pontos)
+           
+         )
 
          const passaro = new Passaro(altura)
 
@@ -172,15 +167,29 @@ function FlappyBird() {
          areaDoJogo.appendChild(passaro.elemento)
          barreiras.pares.forEach(par => areaDoJogo.appendChild(par.elemento))
 
+         
+         const gameOver = document.querySelector('.game-over')
+         const pontuação = document.getElementById('pontuação')
+         pontuação.textContent = `Pontuação: ${pontos}`
+        
+
+       
+
          this.start = () => {
                //loop do jogo
-
+               
+                
                const temporizador = setInterval(() =>{
                    barreiras.animar()
                    passaro.animar()
                 
                    if(colidiu(passaro, barreiras)){
                        clearInterval(temporizador)
+
+                     areaDoJogo.style.display= 'none' 
+                     gameOver.style.visibility = 'visible'
+                     pontuação.textContent = `Pontuação: ${progresso.elemento.textContent}`
+                    
                    }
 
                }, 20 )

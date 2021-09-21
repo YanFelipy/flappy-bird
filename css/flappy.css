@@ -16,6 +16,7 @@
     margin: 15px;
     background-color: deepskyblue;
     overflow: hidden;
+
 }
 
 .passaro {
@@ -59,10 +60,67 @@
 
 .progresso {
     position: absolute;
-    top:10px;
+    top: 10px;
     right: 10px;
     font-family: Pixel;
     font-size: 50px;
     z-index: 100;
+
+}
+
+.game-over {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 340px;
+    margin: 0 auto;
+    position: absolute;
+    top: 30%;
+    font-family: 'Pixel';
+    src: url('/fonts/Pixel.ttf');
+    visibility: hidden;
+    animation: zoomAndVisible ease 3.2s;
+}
+
+.game-over #pontuação {
+    font-size: 20px;
+    margin: 5% 0%;
+
+}
+
+.game-over .btRestart {
+    margin: 5% 0%;
+    font-size: 15px;
+    width: 200px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-image: linear-gradient(to right, #FF512F 0%, #F09819 51%, #FF512F 100%);
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 14px #eee;
+
+}
+
+.game-over .btRestart:hover {
+    background-position: right center;
+    /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+
+
+@keyframes zoomAndVisible {
+    0% {
+        opacity: 0%;
+        transform: scale(0.0)
+    }
 
 }
