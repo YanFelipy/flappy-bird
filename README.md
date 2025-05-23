@@ -16,7 +16,7 @@ Realizei a implementação do projeto original trocando a tela no fim do jogo, o
 ## Como executar o projeto:
 ```bash
 ## clonar repositório:
-git clone https://github.com/YanFelipy/template-rede-social
+git clone https://github.com/YanFelipy/flappy-bird
 ```
 ## Executar o projeto:
  Entre na pasta do projeto e clique em flappy.html
